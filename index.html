@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>娃娃商品子页 · 手机预览</title>
+<link rel="stylesheet" href="./style.css">
+<style>
+.preview-page{max-width:1200px;margin:auto;padding:28px clamp(16px,4vw,48px);--preview-card-shadow:0 8px 18px rgba(164,122,79,.10),0 2px 5px rgba(164,122,79,.045),inset 0 1px 0 rgba(255,255,255,.78)}
+.sidebar{border-right:0}
+.product-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;margin:0 0 12px;padding:0 4px}
+.product-heading-copy{min-width:0}
+.product-heading h1{min-width:0;margin:0;font-family:"Noto Sans SC","Microsoft YaHei UI","PingFang SC",sans-serif;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:.02em;color:#9a7b59}
+.product-read-dot{flex:0 0 10px;width:10px;height:10px;border-radius:50%;background:#7cad88;box-shadow:0 0 0 4px #e8f2e8}
+.monitor-status{display:inline-flex;flex:0 0 auto;align-items:center;gap:9px}
+.monitor-time{flex:0 0 auto;color:#788a78;font-size:11px;font-weight:500;white-space:nowrap}
+.preview-page .sku-dash-intro .stock-setup-cta{width:fit-content;min-width:0;max-width:240px;box-sizing:border-box;min-height:42px;margin:0;padding:7px 12px;align-items:center;justify-content:center;gap:8px;flex:0 0 auto}
+.preview-page .sku-dash-intro .stock-setup-cta small{display:none}
+.preview-page .sku-dash-intro .stock-setup-cta>span:first-child{width:24px;height:24px;flex-basis:24px;border-radius:50%;font-size:17px}
+.preview-page .sku-dash-intro .stock-setup-cta,.preview-page .preview-stock-panel,.preview-page>.sku-dashboard.card,.preview-page .doll-card{box-shadow:var(--preview-card-shadow)}
+
+.preview-page>.sku-dashboard{margin-top:12px!important;padding:0}
+.preview-page>.sku-dashboard .sku-dash-intro{padding:14px 20px;gap:12px}
+.preview-page>.sku-top-summary{width:100%;box-sizing:border-box;grid-template-columns:1fr 1.2fr;gap:12px;margin:0 0 12px;padding:0}
+.preview-page>.sku-top-summary .sku-total-card{min-height:94px;padding:15px 18px;border-radius:18px;box-shadow:var(--preview-card-shadow);backdrop-filter:blur(12px);transform:translateY(-1px)}
+.preview-page>.sku-top-summary .sku-total-card.total-revenue{box-shadow:var(--preview-card-shadow)}
+.preview-page>.sku-top-summary .sku-total-card>span{font-size:12px}
+.preview-page>.sku-top-summary .sku-total-card>strong{font-size:27px}
+.preview-page>.sku-top-summary .sku-total-card>small{font-size:10px}
+@media(max-width:760px){.product-heading{margin-bottom:10px;padding:0 2px}.product-heading h1{font-size:11px}.preview-page>.sku-top-summary{grid-template-columns:1fr 1fr;gap:12px}.preview-page>.sku-top-summary .sku-total-card{min-height:80px;padding:11px 10px;border-radius:14px}.preview-page>.sku-top-summary .sku-total-card>strong{font-size:21px}.preview-page>.sku-dashboard{margin-top:12px!important}.preview-page>.sku-dashboard .sku-dash-intro{padding:11px 14px 12px;gap:8px;flex-wrap:wrap}.preview-page .sku-dash-intro>div{flex:1 1 150px;min-width:0}.preview-page .sku-dash-intro .stock-setup-cta{max-width:160px;margin-left:auto;padding:6px 9px;gap:6px}.preview-page .sku-dash-intro .stock-setup-cta b{font-size:10px}}
+
+
+@media(min-width:981px){.preview-page .doll-grid{justify-items:center;gap:12px}.preview-page .doll-card{width:100%;max-width:232px;padding:11px}}
+@media(max-width:980px) and (min-width:681px){.preview-page .doll-grid{justify-items:center}.preview-page .doll-card{width:100%;max-width:270px;padding:11px}}
+@media(max-width:680px){.preview-page .doll-card{width:100%;max-width:none}}
+
+.preview-page>.sku-top-summary .sku-total-card{background:linear-gradient(145deg,rgba(220,240,237,.94),rgba(246,251,246,.94));color:#426765}
+.preview-page>.sku-top-summary .sku-total-card>span,.preview-page>.sku-top-summary .sku-total-card>small{color:#66817b}
+.preview-page>.sku-top-summary .sku-total-card>strong{color:#3f6966}
+.preview-page>.sku-top-summary .sku-total-card.total-revenue{background:linear-gradient(145deg,rgba(248,236,207,.96),rgba(255,251,239,.96))}
+.preview-page>.sku-top-summary .sku-total-card.total-revenue>span,.preview-page>.sku-top-summary .sku-total-card.total-revenue>small{color:#8a7452}
+.preview-page>.sku-top-summary .sku-total-card.total-revenue>strong{color:#89613d}
+.preview-page .sku-dash-intro .stock-setup-cta{background:linear-gradient(135deg,rgba(222,240,235,.96),rgba(246,250,240,.94));color:#4f706a;border-radius:18px}
+.preview-page .sku-dash-intro .stock-setup-cta>span:first-child{background:rgba(196,225,215,.78);color:#4f7169;border-radius:12px}
+.preview-page>.sku-dashboard.card{background:rgba(255,249,239,.66);border-radius:22px}
+.preview-page .doll-card{background:linear-gradient(155deg,rgba(255,253,247,.97),rgba(247,248,238,.94));border-radius:20px}
+.preview-page .doll-photo-wrap{background:radial-gradient(circle at 48% 28%,#f5fbf7,#e1efeb)}
+.preview-page .doll-grid{gap:12px;padding:4px 20px 18px}
+@media(max-width:760px){.preview-page>.sku-dashboard{margin-top:10px!important}.preview-page .doll-grid{gap:10px;padding:4px 14px 14px}}
+.preview-page .doll-progress{position:relative;height:6px;margin:17px 11px 11px;overflow:visible;border-radius:999px;background:#eee9df}
+.preview-page .doll-progress>span{display:block;height:100%;border-radius:inherit;background:var(--progress-fill);transition:width .3s ease}
+.preview-page .doll-progress-icon{position:absolute;top:50%;left:clamp(9px,var(--progress),calc(100% - 9px));z-index:2;width:18px;height:18px;object-fit:contain;object-position:center;border:0;border-radius:0;background:transparent;filter:drop-shadow(0 1px 1px rgba(103,83,58,.14));transform:translate(-50%,-50%)}
+@media(max-width:760px){.preview-page .doll-progress{margin-top:16px}.preview-page .doll-progress-icon{width:16px;height:16px}}
+.preview-page .doll-photo-wrap{width:100%;height:auto;aspect-ratio:1/1;border-radius:18px}
+.preview-page .doll-photo{border-radius:inherit}
+.doll-metrics strong{font-size:15px!important}.doll-progress span{background:linear-gradient(90deg,#91c6be,#78a9a2)}
+@media(max-width:760px){.preview-page{padding:17px 12px}}
+
+/* 独立手机视图：桌面预览时呈现手机宽度，手机打开时铺满屏幕。 */
+html,body{min-width:320px;min-height:100%;}
+body{background:#eee9df;}
+.app{display:block;width:min(100%,430px);min-height:100dvh;margin:0 auto;background:var(--bg);box-shadow:0 0 36px rgba(91,72,48,.12);}
+.sidebar{display:none!important;}
+.workspace{min-width:0;width:100%;}
+.preview-page{width:100%;max-width:none;margin:0;padding:14px 14px 30px;}
+.mobile-brand{display:flex;align-items:center;gap:9px;min-height:60px;margin:-14px -14px 14px;padding:9px 16px 8px;border-bottom:1px solid var(--line);background:rgba(255,254,250,.86);}
+.mobile-brand img{display:block;width:36px;height:36px;flex:0 0 36px;object-fit:contain;border:0;border-radius:0;}
+.mobile-brand-copy{min-width:0;}
+.mobile-brand-copy strong,.mobile-brand-copy small{display:block;}
+.mobile-brand-copy strong{color:#514537;font-size:14px;font-weight:750;line-height:1.35;}
+.mobile-brand-copy small{margin-top:2px;color:#8a8071;font-size:9px;line-height:1.35;}
+.product-heading{align-items:center;gap:8px;margin:0 0 9px;padding:0 2px;}
+.product-heading h1{font-size:11px;line-height:1.4;}
+.monitor-status{gap:6px;}
+.product-read-dot{width:8px;height:8px;flex-basis:8px;box-shadow:0 0 0 3px #e8f2e8;}
+.monitor-time{font-size:11px;line-height:1.4;}
+.preview-page>.sku-top-summary{grid-template-columns:1fr 1fr;gap:9px;margin:0 0 10px;padding:0;}
+.preview-page>.sku-top-summary .sku-total-card{min-width:0;min-height:78px;padding:11px 10px;border-radius:15px;}
+.preview-page>.sku-top-summary .sku-total-card>span{font-size:11px;}
+.preview-page>.sku-top-summary .sku-total-card>strong{margin-top:2px;font-size:21px;}
+.preview-page>.sku-top-summary .sku-total-card>small{font-size:9px;}
+.preview-page>.sku-dashboard{margin:0!important;border-radius:19px;}
+.preview-page>.sku-dashboard .sku-dash-intro{position:relative;display:block;padding:15px 146px 12px 14px;min-height:78px;}
+.preview-page .sku-dash-intro h2{font-size:16px;line-height:1.4;letter-spacing:0;}
+.preview-page .sku-dash-intro p{display:block;margin:5px 0 0;color:#817766;font-size:11px;line-height:1.5;}
+.preview-page .sku-dash-intro .stock-setup-cta{position:absolute;top:14px;right:14px;width:auto;min-width:0;max-width:none;min-height:44px;margin:0;padding:7px 10px;gap:6px;border-radius:13px;white-space:nowrap;}
+.preview-page .sku-dash-intro .stock-setup-cta>span:first-child{width:23px;height:23px;flex-basis:23px;font-size:16px;}
+.preview-page .sku-dash-intro .stock-setup-cta b{font-size:10px;}
+.preview-page .sku-grid,.preview-page .doll-grid{grid-template-columns:minmax(0,1fr);justify-items:stretch;gap:10px;padding:3px 11px 13px;}
+.preview-page .doll-card{display:grid;grid-template-columns:minmax(88px,27%) minmax(0,1fr);grid-template-rows:auto auto auto auto auto;width:100%;max-width:none;min-width:0;padding:10px;border-radius:18px;column-gap:11px;row-gap:0;align-items:start;}
+.preview-page .doll-card-top{grid-column:1/-1;grid-row:1;min-height:16px;margin-bottom:5px;gap:4px;}
+.preview-page .doll-price,.preview-page .doll-rank{font-size:9px;}
+.preview-page .doll-photo-wrap{grid-column:1;grid-row:2/6;width:100%;height:auto;aspect-ratio:1/1;margin-top:0;border-radius:14px;}
+.preview-page .doll-name{grid-column:2;grid-row:2;overflow:hidden;margin:1px 0 4px;font-size:13px;line-height:1.45;text-overflow:ellipsis;white-space:nowrap;}
+.preview-page .doll-metrics{grid-column:2;grid-row:3;grid-template-columns:1fr 1.2fr;gap:0;padding:4px 0;border-top:1px solid rgba(185,163,130,.18);border-bottom:1px solid rgba(185,163,130,.18);}
+.preview-page .doll-metrics>div,.preview-page .doll-metrics>div+div{min-width:0;padding:0 5px;border:0;background:transparent;}
+.preview-page .doll-metrics>div:first-child{padding-left:0;}
+.preview-page .doll-metrics small{font-size:9px;}
+.preview-page .doll-metrics strong,.preview-page .doll-metrics>div+div strong{overflow:hidden;margin-top:1px;font-size:12px!important;text-overflow:ellipsis;}
+.preview-page .doll-progress-label{grid-column:2;grid-row:4;margin:5px 1px 3px;font-size:9px;}
+.preview-page .doll-progress{grid-column:2;grid-row:5;height:5px;margin:10px 7px 6px;}
+.preview-page .doll-progress-icon{width:16px;height:16px;left:clamp(8px,var(--progress),calc(100% - 8px));}
+.preview-page .stock-setup-panel{margin:0 11px 12px;padding:12px;border-radius:16px;}
+.product-link-reader{display:grid;gap:6px;margin:0 0 11px;}
+.product-link-reader>label{color:#706756;font-size:11px;font-weight:650;}
+.product-link-reader-controls{display:flex;align-items:center;gap:8px;}
+.product-link-reader-controls input{flex:1;min-width:0;height:42px;padding:0 12px;border:1px solid rgba(180,158,124,.25);border-radius:12px;background:rgba(255,255,255,.7);color:#514537;font-size:12px;outline:none;}
+.product-link-reader-controls input::placeholder{color:#a49a89;}
+.product-link-reader-controls input:focus{border-color:#9fc7b7;box-shadow:0 0 0 3px rgba(148,195,174,.16);}
+.product-link-reader-controls button{flex:0 0 auto;min-width:64px;height:42px;padding:0 13px;border:0;border-radius:12px;background:linear-gradient(135deg,#dcefe7,#f3f7e9);color:#54746c;font-size:11px;font-weight:700;}
+.preview-page .stock-setup-row{min-height:44px;gap:7px;}
+.preview-page .stock-setup-row input{width:86px;min-height:40px;}
+.preview-page .stock-setup-actions button{min-height:44px;}
+@media(max-width:360px){.preview-page{padding-inline:10px}.mobile-brand{margin-inline:-10px;padding-inline:14px}.preview-page>.sku-top-summary .sku-total-card{padding-inline:8px}.preview-page>.sku-dashboard .sku-dash-intro{padding-right:132px;min-height:74px}.preview-page .sku-dash-intro h2{font-size:14px}.preview-page .sku-dash-intro p{font-size:10px}.preview-page .sku-dash-intro .stock-setup-cta{right:10px;padding-inline:7px}.preview-page .doll-grid{gap:8px;padding-inline:8px}.preview-page .doll-card{grid-template-columns:minmax(82px,27%) minmax(0,1fr);padding:9px;column-gap:9px}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand-block"><a class="brand" href="#"><img class="logo" src="https://raw.githubusercontent.com/gooliu/weidian-monitor/main/logo.png" alt="牛宝小屋"></a><div class="brand-meta"><strong>微店销量监控</strong><small class="brand-copyright">© 仅供纽斯使用 · 牛宝顶流版🐮✨</small></div></div>
+
+  </aside>
+  <div class="workspace">
+    <main class="preview-page">
+      <div class="mobile-brand"><img src="https://raw.githubusercontent.com/gooliu/weidian-monitor/main/logo.png" alt="牛宝小屋标志" /><div class="mobile-brand-copy"><strong>微店销量监控</strong><small>© 仅供纽斯使用 · 牛宝顶流版🐮✨</small></div></div>
+      <header class="product-heading"><div class="product-heading-copy"><h1>头套体挂件娃娃</h1></div><span class="monitor-status"><span class="product-read-dot" aria-hidden="true"></span><time class="monitor-time" id="monitorTime">监控时间 --</time></span></header>
+            <div class="sku-top-summary preview-summary"><div class="sku-total-card"><span>链接总销量</span><strong>297</strong><small>示例数据</small></div><div class="sku-total-card total-revenue"><span>链接总金额</span><strong>¥20,075</strong><small>示例数据</small></div></div>
+      <div class="sku-dashboard card" id="list">
+        <div class="sku-dash-intro"><div><h2>商品选项 · 销量排行</h2><p>三款单娃娃加一个 All IN 组合款；按已售数量排序。</p></div><button class="stock-setup-cta" type="button" aria-expanded="false" aria-controls="stockSetupPreview" onclick="togglePreviewStock()"><span>＋</span><span><b>设置初始库存</b><small>填写各选项的起始库存</small></span></button></div>
+        <div class="stock-setup-panel preview-stock-panel" id="stockSetupPreview" hidden><div class="product-link-reader"><label for="otherProductUrl">读取其他商品链接</label><div class="product-link-reader-controls"><input id="otherProductUrl" type="url" inputmode="url" placeholder="粘贴微店商品链接" autocomplete="url" /><button type="button" aria-label="读取商品链接">读取</button></div></div><div class="stock-setup-list">
+        <label class="stock-setup-row"><span><b>All IN</b><small>当前库存 10,000 · ¥175</small></span><input type="number" min="0" placeholder="起始库存"></label>
+        <label class="stock-setup-row"><span><b>凌鲨鲨</b><small>当前库存 10,000 · ¥59</small></span><input type="number" min="0" placeholder="起始库存"></label>
+        <label class="stock-setup-row"><span><b>小赫桃</b><small>当前库存 10,000 · ¥59</small></span><input type="number" min="0" placeholder="起始库存"></label>
+        <label class="stock-setup-row"><span><b>凌巴拉</b><small>当前库存 10,000 · ¥59</small></span><input type="number" min="0" placeholder="起始库存"></label>
+      </div><p class="stock-setup-hint">填写开始监控时各选项的库存。</p><div class="stock-setup-actions"><button class="mini" type="button" onclick="togglePreviewStock()">收起</button></div></div>
+        <div class="doll-grid">
+          <article class="doll-card"><div class="doll-card-top"><span class="doll-price">¥59</span></div><div class="doll-photo-wrap"><img class="doll-photo" src="https://si.geilicdn.com/wdseller1998735185-3962000001a17826e75c0a22d535_1280_1280.jpg" alt="凌鲨鲨"></div><h3 class="doll-name">凌鲨鲨</h3><div class="doll-metrics"><div><small>销量</small><strong>120</strong></div><div><small>销售额</small><strong>¥7,080</strong></div></div><div class="doll-progress-label"><span>销量进度</span><b>60%</b></div><div class="doll-progress" style="--progress:60%;--progress-fill:linear-gradient(90deg,#83d0cc,#4f9ea9);--icon-tint:#dff2ee"><span style="width:60%"></span><img class="doll-progress-icon" src="./products/ling-sha-sha-cutout.png" alt="" aria-hidden="true"></div></article>
+          <article class="doll-card"><div class="doll-card-top"><span class="doll-price">¥59</span></div><div class="doll-photo-wrap"><img class="doll-photo" src="https://si.geilicdn.com/wdseller1998735185-71e3000001a17827366e0a20e7c7_1280_1280.jpg" alt="小赫桃"></div><h3 class="doll-name">小赫桃</h3><div class="doll-metrics"><div><small>销量</small><strong>90</strong></div><div><small>销售额</small><strong>¥5,310</strong></div></div><div class="doll-progress-label"><span>销量进度</span><b>45%</b></div><div class="doll-progress" style="--progress:45%;--progress-fill:linear-gradient(90deg,#d9a987,#a96f56);--icon-tint:#f3e3d5"><span style="width:45%"></span><img class="doll-progress-icon" src="./products/xiao-he-tao-cutout.png" alt="" aria-hidden="true"></div></article>
+          <article class="doll-card"><div class="doll-card-top"><span class="doll-price">¥59</span></div><div class="doll-photo-wrap"><img class="doll-photo" src="https://si.geilicdn.com/wdseller1998735185-2060000001a1782791b30a23047e_1280_1280.jpg" alt="凌巴拉"></div><h3 class="doll-name">凌巴拉</h3><div class="doll-metrics"><div><small>销量</small><strong>65</strong></div><div><small>销售额</small><strong>¥3,835</strong></div></div><div class="doll-progress-label"><span>销量进度</span><b>33%</b></div><div class="doll-progress" style="--progress:33%;--progress-fill:linear-gradient(90deg,#eccb79,#c58b3c);--icon-tint:#f8eccb"><span style="width:33%"></span><img class="doll-progress-icon" src="./products/ling-ba-la-cutout.png" alt="" aria-hidden="true"></div></article>
+          <article class="doll-card"><div class="doll-card-top"><span class="doll-price">¥175</span></div><div class="doll-photo-wrap"><img class="doll-photo" src="https://si.geilicdn.com/wdseller1998735185-6cd3000001a1782683090a231316_1280_1280.jpg" alt="All IN 组合款"></div><h3 class="doll-name">All IN · 三款组合</h3><div class="doll-metrics"><div><small>销量</small><strong>22</strong></div><div><small>销售额</small><strong>¥3,850</strong></div></div><div class="doll-progress-label"><span>销量进度</span><b>22%</b></div><div class="doll-progress" style="--progress:22%;--progress-fill:linear-gradient(90deg,#6db9b5 0%,#d0a185 55%,#d8b253 100%);--icon-tint:#eee6d0"><span style="width:22%"></span><img class="doll-progress-icon" src="./products/all-in-cutout.png" alt="" aria-hidden="true"></div></article>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script>
+function updateMonitorTime(){const now=new Date();const time=now.toLocaleString("zh-CN",{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});document.getElementById("monitorTime").textContent="监控时间 "+time;}updateMonitorTime();setInterval(updateMonitorTime,60000);
+function togglePreviewStock(){const p=document.getElementById("stockSetupPreview");const b=document.querySelector("[aria-controls='stockSetupPreview']");p.hidden=!p.hidden;b.setAttribute("aria-expanded",String(!p.hidden));if(!p.hidden)p.querySelector("input")?.focus();}
+</script>
+</body></html>
+
+
